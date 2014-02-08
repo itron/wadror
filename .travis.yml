@@ -12,4 +12,3 @@ deploy:
     secure: ZHM29vBIkDxk+TMMq/ksnYA36HIwyz82qD7MBL3+TLG9kLXBy0uPxT049pp7AhnGORHyEcUl34Kr+3uxSnPRlabPptF7YgS9bC5fdZs9ucfx/RjaJVZrVVWB3axi1/KO4fptGqq2y0wQ/zBQSyWG8kxCboPeFw58VQkRP/dw+n8=
     app: tranquil-caverns-7752
     run: "rake db:migrate"
-    strategy: git
