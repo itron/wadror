@@ -22,3 +22,5 @@ module Ratebeer
     # config.i18n.default_locale = :de
   end
 end
+
+config.i18n.enforce_available_locales = true

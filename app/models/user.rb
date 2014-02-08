@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	include RatingAverage
+	extend ActiveSupport::Concern
 
 	has_secure_password
 	
@@ -16,4 +17,31 @@ class User < ActiveRecord::Base
 
 	has_many :memberships, dependent: :destroy
 	has_many :beer_clubs, through: :memberships
+
+	def favorite_beer
+    return nil if ratings.empty?
+    ratings.order(score: :desc).limit(1).first.beer
+  end
+
+  def favorite_style
+  	return nil if ratings.empty?
+  	ratings.sort_by{ |rating| 
+  		rating.beer.style 
+  	}.chunk { |rating|
+  		rating.beer.style
+  	}.sort_by { |style, ary|
+  		ary.inject(0){ |sum, rating| sum += rating.score }.to_f / ary.size
+  	}.last[0]
+  end
+
+  def favorite_brewery
+  	return nil if ratings.empty?
+  	ratings.sort_by{ |rating| 
+  		rating.beer.brewery
+  	}.chunk { |rating|
+  		rating.beer.brewery
+  	}.sort_by { |brewery, ary|
+  		ary.inject(0){ |sum, rating| sum += rating.score }.to_f / ary.size
+  	}.last[0]
+  end
 end

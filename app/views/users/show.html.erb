@@ -4,14 +4,25 @@
   <strong>Username:</strong>
   <%= @user.username %>
 </p>
-<p>
-  <% if @user.ratings.count > 0 %>
-  	<%= "has made #{pluralize(@user.ratings.count, 'ratings')}" %>
-  	<%= "with an average of #{@user.average_rating}" %>
-  <% else %>
-    has not rated any beers
-  <% end %>
-</p>
+
+<% if @user.ratings.count > 0 %>
+  <p>
+    <%= "has made #{pluralize(@user.ratings.count, 'ratings')}" %>
+    <%= "with an average of #{@user.average_rating}" %>
+  </p>
+  <p>
+    <%= "Favorite style: #{@favorite_style}" %>
+  </p>
+  <p>
+    <%= "Favorite brewery: #{@favorite_brewery}" %>
+  </p>
+  <p>
+    <%= "Favorite beer: #{@favorite_beer}" %>
+  </p>
+<% else %>
+  has not rated any beers
+<% end %>
+
 
 <p>
 	<strong>Beer club memberships</strong>

@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.0.0
+script:
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZHM29vBIkDxk+TMMq/ksnYA36HIwyz82qD7MBL3+TLG9kLXBy0uPxT049pp7AhnGORHyEcUl34Kr+3uxSnPRlabPptF7YgS9bC5fdZs9ucfx/RjaJVZrVVWB3axi1/KO4fptGqq2y0wQ/zBQSyWG8kxCboPeFw58VQkRP/dw+n8=
+    app: tranquil-caverns-7752
+    run: "rake db:migrate"
+    strategy: git

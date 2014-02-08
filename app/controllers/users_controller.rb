@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @favorite_style = @user.favorite_style
+    @favorite_brewery = @user.favorite_brewery.name unless @user.ratings.count == 0
+    @favorite_beer = @user.favorite_beer
   end
 
   # GET /users/new
