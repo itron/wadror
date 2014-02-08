@@ -9,6 +9,6 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: ZHM29vBIkDxk+TMMq/ksnYA36HIwyz82qD7MBL3+TLG9kLXBy0uPxT049pp7AhnGORHyEcUl34Kr+3uxSnPRlabPptF7YgS9bC5fdZs9ucfx/RjaJVZrVVWB3axi1/KO4fptGqq2y0wQ/zBQSyWG8kxCboPeFw58VQkRP/dw+n8=
+    secure: Dp8/QC0KYcUZ6EnrbqV3fqVQCIdJF1c0BpUBxoIDzdswDenQC7ggcBIxrCIAvTh4dw8FaKwQNAgnU3q3stoveIhR7GNQYdvA13KStXW8LKKrznB42dnJgJV4gUNw2C44hlpbz5d5koqRPmN3VOIslqkyfHhjyqr/WL5daxaDyNA=
   app: tranquil-caverns-7752
-  run: "rake db:migrate"
+  run: rake db:migrate
