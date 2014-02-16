@@ -8,6 +8,13 @@
   <%= "Founded in #{@beer_club.founded}" %>
 </p>
 
+<% if current_user and not is_a_member(current_user.id) %>
+	<%= form_for(@membership) do |f| %>
+	  <%= f.hidden_field :beer_club_id %>
+	  <%= f.submit value:"join the club" %>
+	<% end %>
+<% end %>
+<%= params[:beer_club_id] %>
 <strong>Members</strong>
 <ul>
 	<% @beer_club.users.each do |u| %>

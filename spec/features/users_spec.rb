@@ -73,7 +73,7 @@ describe "User" do
     end
 
     it "favorite beer style is displayed correctly" do
-      best_beer = FactoryGirl.create :beer, name:"best", style:"Ultimate"
+      best_beer = FactoryGirl.create :beer, name:"best", style:FactoryGirl.create(:style, name:"Ultimate", description:"none")
       FactoryGirl.create :rating, score:50, beer:best_beer, user:user
 
       visit user_path(user)
@@ -83,7 +83,7 @@ describe "User" do
 
     it "favorite brewery is displayed correctly" do
       best_brewery = FactoryGirl.create :brewery, name:"B"
-      best_beer = FactoryGirl.create :beer, name:"best", style:"Ultimate", brewery:best_brewery
+      best_beer = FactoryGirl.create :beer, name:"best", brewery:best_brewery
       FactoryGirl.create :rating, score:50, beer:best_beer, user:user
 
       visit user_path(user)

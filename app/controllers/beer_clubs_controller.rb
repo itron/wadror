@@ -3,6 +3,12 @@ class BeerClubsController < ApplicationController
   before_action :ensure_that_signed_in, except: [:index, :show]
   before_action :authenticated_admin, only: [:destroy]
 
+  helper_method :is_a_member
+
+  def is_a_member(user_id)
+    Membership.find_by(user_id: user_id, beer_club_id: @beer_club.id )
+  end
+
   # GET /beer_clubs
   # GET /beer_clubs.json
   def index
@@ -12,6 +18,8 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs/1
   # GET /beer_clubs/1.json
   def show
+    @membership = Membership.new
+    @membership.beer_club = @beer_club
   end
 
   # GET /beer_clubs/new

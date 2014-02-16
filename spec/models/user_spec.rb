@@ -88,9 +88,9 @@ describe User do
     end
 
      it "is the style of the beer with highest rating if several rated" do
-      create_beers_with_ratings_and_style(10, 20, 15, 7, 9, user, "X")
-      create_beers_with_ratings_and_style(30, 1, 50, 1, 1, user, "Y")
-      best = create_beer_with_rating_and_style(25, user, "Best of the best")
+      create_beers_with_ratings_and_style(10, 20, 15, 7, 9, user, FactoryGirl.create(:style, name:"X"))
+      create_beers_with_ratings_and_style(30, 1, 50, 1, 1, user, FactoryGirl.create(:style, name:"Y"))
+      best = create_beer_with_rating_and_style(49, user, FactoryGirl.create(:style, name:"Best of the best"))
 
       expect(user.favorite_style).to eq(best.style)
     end
